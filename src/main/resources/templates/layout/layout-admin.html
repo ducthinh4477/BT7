@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8" />
+    <title layout:title-pattern="$CONTENT_TITLE | Admin Panel">Admin Panel</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
 </head>
+
 <body>
+
+<header class="row">
+    <div layout:replace="decorators/fragments/header :: header"></div>
+</header>
+
+<main class="container mt-3">
+    <div class="row">
+        <div class="col-12" layout:fragment="content">
+            <!-- nội dung sẽ được load vào đây -->
+        </div>
+    </div>
+</main>
+
+<footer class="row mt-3">
+    <div layout:replace="decorators/fragments/footer :: footer"></div>
+</footer>
+
+<!-- JS -->
+<script th:src="@{/js/bootstrap.js}"></script>
 
 </body>
 </html>

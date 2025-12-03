@@ -1,5 +1,7 @@
 package vn.iotstar.service;
 
-public class UserService {
+import vn.iotstar.entity.User;
 
+public interface UserService {
+    User login(String username, String password);
 }

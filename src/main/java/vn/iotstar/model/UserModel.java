@@ -1,25 +1,18 @@
-package vn.iotstar.entity;
+package vn.iotstar.model;
 
-import jakarta.persistence.*;
 import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name="users")
-public class User {
+public class UserModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-
     private String username;
     private String password;
     private String fullname;
     private String email;
     private String phone;
-
-    private String role; 
+    private String role;
     private Boolean active = true;
 }

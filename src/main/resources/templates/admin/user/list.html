@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout-admin}">
+
+<head>
+    <title>Danh sách User</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+
+    <h3 class="mt-3 mb-3">Danh sách User</h3>
+
+    <a class="btn btn-success mb-3" th:href="@{/admin/users/add}">
+        + Thêm User
+    </a>
+
+    <table class="table table-bordered table-hover text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Họ Tên</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Active</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="u : ${users}">
+                <td th:text="${u.userId}"></td>
+                <td th:text="${u.username}"></td>
+                <td th:text="${u.fullname}"></td>
+                <td th:text="${u.email}"></td>
+                <td th:text="${u.phone}"></td>
+                <td th:text="${u.role}"></td>
+
+                <td>
+                    <span th:text="${u.active ? 'Active' : 'Inactive'}"></span>
+                </td>
+
+                <td>
+                    <a class="btn btn-primary btn-sm"
+                       th:href="@{'/admin/users/edit/' + ${u.userId}}">
+                        Sửa
+                    </a>
+
+                    <a class="btn btn-danger btn-sm"
+                       th:href="@{'/admin/users/delete/' + ${u.userId}}"
+                       onclick="return confirm('Xóa user này?')">
+                        Xóa
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>
